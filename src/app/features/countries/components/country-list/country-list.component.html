@@ -1,0 +1,24 @@
+<h1>Country List</h1>
+
+<div class="grid-container">
+    <div class="grid-row">
+    <div class="grid-header">Name</div>
+    <div class="grid-header">Flag</div>
+    </div>  
+
+    <ng-container *ngFor="let country of countries">
+        <div class="grid-row">
+            <div class="grid-item">{{country.name}}</div>
+            <div class="grid-item">
+                <a (click)="selectedCountry(country.name)">
+                    <img [src]="country.flag" alt="{{ country.name }}" />
+                </a>
+            </div>
+
+            <!--Details Row-->
+            <div class="details-row" *ngIf="selectedCountryName === country.name">
+                <app-country-detail [countryName]="selectedCountryName"></app-country-detail>
+            </div>
+        </div>
+    </ng-container>    
+</div>
